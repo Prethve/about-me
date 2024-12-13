@@ -3,13 +3,13 @@ import Navbar from '@/components/Navbar'
 
 import '@/assets/styles/globals.css'
 export const metadata = {
-  title: 'Prethve Deev | Get to Know Me!',
+  title: 'Purchases and Savings',
   description: ''
 }
 
 const MainLayout = ({children}) => {
   return (
-    <html lang='en'>
+    <html lang='en' className='bg-gray-900'>
       <body>
         <Navbar />
         <div>{children}</div>
