@@ -15,8 +15,8 @@ const HomePage = () => {
         Fetch the username from database
       </div>
       <div className='flex justify-center'>
-        <Card image={v1} title='Expenses' desc='Trends of spending habits, key spending factors and more'/>
-        <Card image={v2} title='Savings' desc='Monthly savings, key saving factors and more'/>
+        <Card image={v1} title='Expenses' desc='Expenditure trends, key spending factors'/>
+        <Card image={v2} title='Savings' desc='Monthly savings, key saving factors'/>
       </div>
     </div>
   )
