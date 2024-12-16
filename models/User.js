@@ -9,6 +9,9 @@ const UserSchema = new Schema({
     username: {
         type: String,
         required: [true, 'Username is required!']
+    },
+    image: {
+        type: String
     }
 }, {timestamps: true});
 
