@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import { FaGoogle } from 'react-icons/fa';
 import { FaIdCard } from "react-icons/fa";
@@ -15,9 +15,11 @@ const Navbar = () => {
   const profileImage = session?.user?.image
   const profileEmail = session?.user?.email
 
-  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [providers, setProviders] = useState(null);
+
   const pathname = usePathname();
+  // const router = useRouter();
   
   useEffect(() => {
     const setAuthProviders = async () => {
@@ -28,7 +30,7 @@ const Navbar = () => {
     setAuthProviders();
   }, [])
   
-  // console.log(providers)
+  // console.log(session)
   return (
     <nav className='rounded-lg bg-gray-800'>
       <div className='flex mx-auto py-3 max-w-6xl justify-between'>
@@ -57,7 +59,6 @@ const Navbar = () => {
           </>
           ) : (<></>)}
         </div>
-        {/* */}
 
         { session ? (
           <>
@@ -117,13 +118,15 @@ const Navbar = () => {
           ) : (
           <div
             className='relative flex h-max px-4 py-2 mx-12 items-center self-center rounded-lg bg-sky-900'>
-              <FaGoogle className='text-white mr-2'/>
-              {providers && Object.values(providers).map((provider, index) => (
-                <button 
-                  className='text-white' 
-                  key={index}
-                  onClick={() => signIn(provider.id)}>Login or Register</button>
-              ))}
+            <FaGoogle className='text-white mr-2'/>
+            {providers && Object.values(providers).map((provider, index) => (
+              <button 
+                className='text-white' 
+                key={index}
+                onClick={() => {
+                  signIn(provider.id);
+                }}>Login or Register</button>
+            ))}
           </div> 
           )
         }
